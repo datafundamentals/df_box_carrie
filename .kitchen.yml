@@ -1,0 +1,21 @@
+---
+driver:
+  network:
+  - ["private_network", {ip: "192.168.33.44"}]
+  customize:
+    memory: 4096
+  synced_folders: [["/vagrant/binaries", "/vagrant/binaries"]]
+  name: vagrant
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  - name: ubuntu-12.04
+  - name: centos-6.4
+
+suites:
+  - name: default
+    run_list:
+      - recipe[df_box_carrie::default]
+    attributes:
